@@ -2,21 +2,21 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /*
-Программа содержит форму ввода счета-фактуры.
-Производит автоматический расчет totalValue и добавляет значение в коллекцию.
-Выводит в консоль новую счет-фактуру.
-Выводит в консоль весь перечень счетов-фактур.
-Отображает список всех товаров.
-Выводит в консоль список внешних поставщиков.
-Через консоль запрашивает наименование товара, который необходимо найти на складе.
-Осуществляет поиск товаров на складе по названию.
+РџСЂРѕРіСЂР°РјРјР° СЃРѕРґРµСЂР¶РёС‚ С„РѕСЂРјСѓ РІРІРѕРґР° СЃС‡РµС‚Р°-С„Р°РєС‚СѓСЂС‹.
+РџСЂРѕРёР·РІРѕРґРёС‚ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРёР№ СЂР°СЃС‡РµС‚ totalValue Рё РґРѕР±Р°РІР»СЏРµС‚ Р·РЅР°С‡РµРЅРёРµ РІ РєРѕР»Р»РµРєС†РёСЋ.
+Р’С‹РІРѕРґРёС‚ РІ РєРѕРЅСЃРѕР»СЊ РЅРѕРІСѓСЋ СЃС‡РµС‚-С„Р°РєС‚СѓСЂСѓ.
+Р’С‹РІРѕРґРёС‚ РІ РєРѕРЅСЃРѕР»СЊ РІРµСЃСЊ РїРµСЂРµС‡РµРЅСЊ СЃС‡РµС‚РѕРІ-С„Р°РєС‚СѓСЂ.
+РћС‚РѕР±СЂР°Р¶Р°РµС‚ СЃРїРёСЃРѕРє РІСЃРµС… С‚РѕРІР°СЂРѕРІ.
+Р’С‹РІРѕРґРёС‚ РІ РєРѕРЅСЃРѕР»СЊ СЃРїРёСЃРѕРє РІРЅРµС€РЅРёС… РїРѕСЃС‚Р°РІС‰РёРєРѕРІ.
+Р§РµСЂРµР· РєРѕРЅСЃРѕР»СЊ Р·Р°РїСЂР°С€РёРІР°РµС‚ РЅР°РёРјРµРЅРѕРІР°РЅРёРµ С‚РѕРІР°СЂР°, РєРѕС‚РѕСЂС‹Р№ РЅРµРѕР±С…РѕРґРёРјРѕ РЅР°Р№С‚Рё РЅР° СЃРєР»Р°РґРµ.
+РћСЃСѓС‰РµСЃС‚РІР»СЏРµС‚ РїРѕРёСЃРє С‚РѕРІР°СЂРѕРІ РЅР° СЃРєР»Р°РґРµ РїРѕ РЅР°Р·РІР°РЅРёСЋ.
 */
 
 
 public class Program {
 
     public static void main(String[] args) {
-        // Коллекция счета-фактур
+        // РљРѕР»Р»РµРєС†РёСЏ СЃС‡РµС‚Р°-С„Р°РєС‚СѓСЂ
         ArrayList<GoodsReceivedNote> goodsReceivedNoteList = new ArrayList<>();
         GoodsReceivedNote invoice1 = new GoodsReceivedNote("M&M", "Mila", 1,
                 "2022-05-02", "Shower gel", "piece", 2, 2,
@@ -36,20 +36,20 @@ public class Program {
     }
 
     public static void inputDatas(ArrayList<GoodsReceivedNote> goodsReceivedNoteList) {
-        // Коллекция поставщиков
+        // РљРѕР»Р»РµРєС†РёСЏ РїРѕСЃС‚Р°РІС‰РёРєРѕРІ
         ArrayList<String> suppliers = new ArrayList<>();
         suppliers.add("M&M");
         suppliers.add("Stock 1");
         suppliers.add("Stock 2");
 
-        //Коллекция товаров
+        //РљРѕР»Р»РµРєС†РёСЏ С‚РѕРІР°СЂРѕРІ
         ArrayList<String> allGoodsInStock = new ArrayList<>();
         allGoodsInStock.add("Shower gel");
         allGoodsInStock.add("Shampoo");
         allGoodsInStock.add("Washing powder");
 
 
-        // Форма вводы счета-фактуры
+        // Р¤РѕСЂРјР° РІРІРѕРґС‹ СЃС‡РµС‚Р°-С„Р°РєС‚СѓСЂС‹
         Scanner in = new Scanner(System.in);
         System.out.println("Fill in the invoice.\n From (Supplier): ");
         String supplier = in.nextLine();
@@ -76,7 +76,7 @@ public class Program {
         double unitCost = in.nextDouble();
         in.nextLine();
 
-        // Отображение новой счет-фактуры
+        // РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РЅРѕРІРѕР№ СЃС‡РµС‚-С„Р°РєС‚СѓСЂС‹
         double totalValue = qtyReceived * unitCost;
         System.out.printf("New invoice{" +
                 "Supplier='" + supplier + '\'' +
@@ -95,20 +95,20 @@ public class Program {
                 productName, unit, qtyOrdered, qtyReceived, unitCost, totalValue);
         goodsReceivedNoteList.add(invoice);
 
-        // Отображение списка всех счет-фактур
+        // РћС‚РѕР±СЂР°Р¶РµРЅРёРµ СЃРїРёСЃРєР° РІСЃРµС… СЃС‡РµС‚-С„Р°РєС‚СѓСЂ
         System.out.println("List of invoices: ");
         goodsReceivedNoteList.forEach(System.out::println);
 
-        // Отображение списка всех товаров на складе
+        // РћС‚РѕР±СЂР°Р¶РµРЅРёРµ СЃРїРёСЃРєР° РІСЃРµС… С‚РѕРІР°СЂРѕРІ РЅР° СЃРєР»Р°РґРµ
         System.out.println("List goods in stock: " + allGoodsInStock);
 
-        // Отображение списка внешних поставщиков
+        // РћС‚РѕР±СЂР°Р¶РµРЅРёРµ СЃРїРёСЃРєР° РІРЅРµС€РЅРёС… РїРѕСЃС‚Р°РІС‰РёРєРѕРІ
         List<String> externalSuppliers = suppliers.stream().filter((s) -> !s.contains("Stock")).toList();
         System.out.println("List of external suppliers: " + externalSuppliers);
     }
 
     public static void getGoodsInStock(ArrayList<GoodsReceivedNote> goodsReceivedNoteList){
-        //Поиск товаров на складе по названию
+        //РџРѕРёСЃРє С‚РѕРІР°СЂРѕРІ РЅР° СЃРєР»Р°РґРµ РїРѕ РЅР°Р·РІР°РЅРёСЋ
         Scanner in = new Scanner(System.in);
         System.out.println("Input product name: ");
         String productName = in.nextLine();
